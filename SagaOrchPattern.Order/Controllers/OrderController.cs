@@ -28,13 +28,10 @@ namespace SagaOrchPattern.Order.Controllers
 
             await _bus.Publish<IOrderStartedEvent>(new
             {
-                OrderId = orderModel.OrderId
-                ,
-                PaymentCardNumber = orderModel.PaymentCardNumber
-                ,
+                OrderId = orderModel.OrderId ,
+                PaymentCardNumber = orderModel.PaymentCardNumber ,
                 ProductName = orderModel.ProductName
-                ,
-                IsCanceled = orderModel.IsCanceled
+               
             });
 
 
