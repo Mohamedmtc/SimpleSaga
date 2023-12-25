@@ -23,7 +23,7 @@ namespace SagaOrchPattern.Order.Infra
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.; initial catalog=OrderpriceDb;integrated security=true;");
+            optionsBuilder.UseSqlServer(@"Server=.; initial catalog=OrderpriceDb;integrated security=true;TrustServerCertificate=True");
         }
     }
 }

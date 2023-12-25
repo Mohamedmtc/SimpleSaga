@@ -36,7 +36,7 @@ namespace SagaOrchPattern.Order
             services.AddMassTransitHostedService();
             ////////////////////////////////////////
 
-
+            services.AddCors();
             ////////////////////////////////// Database and Access layer //////////////////////
             services.AddDbContext<OrderDbContext> (o => o.UseSqlServer(Configuration.GetConnectionString("OrderingDatabase")));
             services.AddSingleton<IOrderPriceDataAccess, OrderPriceDataAccess>();
@@ -52,7 +52,12 @@ namespace SagaOrchPattern.Order
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
             app.UseRouting();
 
             app.UseAuthorization();
